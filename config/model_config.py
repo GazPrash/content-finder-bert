@@ -3,8 +3,8 @@ from dataclasses import dataclass
 
 @dataclass
 class ModelConfig:
-    datapath: str = "file.csv"
-    data_key_text_col: str = "website_url"
+    datapath: str = "data/website_classification.csv"
+    data_key_text_col: str = "cleaned_website_text"
     data_key_target_col: str = "target"
     data_key_initial_target_col: str = "Category"
 
