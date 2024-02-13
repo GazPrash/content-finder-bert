@@ -19,9 +19,9 @@ data, data_category_map = prepare_data(
     clf_config.data_key_initial_target_col,
 )
 model = BERTClassifier("bert-base-uncased", clf_config.num_classes)
+optimizer = torch.optim.Adam(model.parameters(), lr=clf_config.learning_rate)
 model.to(clf_config.device)
 tokenizer = BertTokenizer.from_pretrained(clf_config.bert_model_ver)
-optimizer = torch.optim.Adam(model.parameters(), lr=clf_config.learning_rate)
 
 data_config = {
     "text_col": clf_config.data_key_text_col,
@@ -35,6 +35,7 @@ custom_dataloader = CustomDataLoader(
     clf_config.batch_size,
     clf_config.max_len,
     clf_config.random_state,
+    data_config,
 )
 
 train_loader, test_loader = custom_dataloader.prepare_dataloaders()
@@ -42,8 +43,8 @@ trainer = Trainer(
     model,
     train_loader,
     test_loader,
-    tokenizer,
     optimizer,
+    tokenizer,
     clf_config.device,
     clf_config.report_tracking_filepath,
 )

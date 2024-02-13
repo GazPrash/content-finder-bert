@@ -12,7 +12,7 @@ class ModelConfig:
     learning_rate: float = 2e-05
     bert_model_ver: str = "bert-base-uncased"
     total_epochs: int = 4
-    num_classes: int = 2
+    num_classes: int = 16
     test_size: float = 0.2
     random_state: int = 42
     max_len: int = 128
