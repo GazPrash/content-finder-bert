@@ -42,6 +42,7 @@ class CustomDataLoader:
         batch_size,
         max_len,
         random_state,
+        data_config,
     ) -> None:
         self.data = data
         self.bert_model_ver = bert_model_ver
@@ -50,11 +51,12 @@ class CustomDataLoader:
         self.batch_size = batch_size
         self.max_len = max_len
         self.random_state = random_state
+        self.data_config = data_config
 
     def prepare_dataloaders(self):
         train_texts, test_texts, train_labels, test_labels = train_test_split(
-            self.data.text,
-            self.data.target,
+            self.data[self.data_config["text_col"]],
+            self.data[self.data_config["target_col"]],
             test_size=self.test_size,
             random_state=self.random_state,
         )

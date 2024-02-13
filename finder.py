@@ -23,6 +23,10 @@ model.to(clf_config.device)
 tokenizer = BertTokenizer.from_pretrained(clf_config.bert_model_ver)
 optimizer = torch.optim.Adam(model.parameters(), lr=clf_config.learning_rate)
 
+data_config = {
+    "text_col": clf_config.data_key_text_col,
+    "target_col": clf_config.data_key_target_col,
+}
 custom_dataloader = CustomDataLoader(
     data,
     clf_config.bert_model_ver,
