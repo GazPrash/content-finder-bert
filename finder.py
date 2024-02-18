@@ -71,7 +71,7 @@ def predict_sentiment(text, model, tokenizer, device, max_length=clf_config.max_
         # return "spam" if preds.item() == 1 else "ham"
 
 
-test_text = "Insert sample text for classification"
+test_text = "Tell me any website for watching football matches"
 category_int = trainer.predict_sample(test_text, clf_config.max_len)
 
 cluster_model = ClusterClassifier(
