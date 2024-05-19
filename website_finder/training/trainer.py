@@ -89,7 +89,6 @@ class Trainer:
             outputs = self.model(input_ids=input_ids, attention_mask=attention_mask)
             _, preds = torch.max(outputs, dim=1)
             return preds.item()
-            # return "spam" if preds.item() == 1 else "ham"
         # result = predict_sentiment(test_text, model, tokenizer, device)
         # print(test_text)
         # print(f"Predicted sentiment: {result}")

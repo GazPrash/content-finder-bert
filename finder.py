@@ -48,31 +48,13 @@ trainer = Trainer(
     clf_config.device,
     clf_config.report_tracking_filepath,
 )
-
 trainer.initiate_training(clf_config.total_epochs)
 
 
-def predict_sentiment(text, model, tokenizer, device, max_length=clf_config.max_len):
-    model.eval()
-    encoding = tokenizer(
-        text,
-        return_tensors="pt",
-        max_length=max_length,
-        padding="max_length",
-        truncation=True,
-    )
-    input_ids = encoding["input_ids"].to(device)
-    attention_mask = encoding["attention_mask"].to(device)
-
-    with torch.no_grad():
-        outputs = model(input_ids=input_ids, attention_mask=attention_mask)
-        _, preds = torch.max(outputs, dim=1)
-        return preds.item()
-        # return "spam" if preds.item() == 1 else "ham"
-
-
-test_text = "Tell me any website for watching football matches"
-category_int = trainer.predict_sample(test_text, clf_config.max_len)
+# MODIFY THE CODE BELOW ACCORDING TO YOUR NEEDS.
+# put any of your queries here;
+query_text = "Tell me any website for watching football matches"
+category_int = trainer.predict_sample(query_text, clf_config.max_len)
 
 cluster_model = ClusterClassifier(
     data,
@@ -82,5 +64,5 @@ cluster_model = ClusterClassifier(
 )
 
 cluster_model.prepare_text_cluster(predicted_category=category_int)
-predicted_sites = cluster_model.predict_top_n(test_text, n=10)
+predicted_sites = cluster_model.predict_top_n(query_text, n=10)
 print(predicted_sites)
