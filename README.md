@@ -1,4 +1,4 @@
-# ContentFinder: Reverse Search on any content with BERT Transformer and Sentence Clustering
+# ContentFinder: Intelligent Content Search BERT Transformer and Sentence Clustering
 
 ## Overview
 ContentFinder is a reverse search application that utilizes BERT (Bidirectional Encoder Representations from Transformers) text classifier model and sentence clustering to facilitate content retrieval based on natural language queries. This project was designed to develop an extensive transformer-based search algorithm for information retrieval. The process is particularly useful for extracting information from large databases when the exact query is unclear, similar to how ChatGPT can respond to conversational queries without needing precisely worded questions. The goal of this project was to create an information retrieval tool to act as an intermediary between users and large-scale documents. For instance, lawyers dealing with extensive documentation could use this model to find relevant laws. While most of the times exact searches may yield no results, this tool could help by showcasing similar laws based on their search queries.
